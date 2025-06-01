@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Registration Form Launch Up ACS UNMSM 2025</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <h1>Event Registration Form Launch Up ACS UNMSM 2025</h1>
+  
+  <form id="registration-form">
+    <!-- Hidden input for fixed event name -->
+    <input type="hidden" name="event_name" value="Launch Up ACS UNMSM 2025">
+
+    <input name="full_name" placeholder="Full Name" required><br>
+    <input name="email" type="email" placeholder="Email" required><br>
+    <input name="id_document" placeholder="ID Document (DNI or Foreigner Card)" required><br>
+    <input name="organization" placeholder="Organization or University" required><br>
+    <input name="position" placeholder="Position (or 'Student')" required><br>
+    <input name="major" placeholder="University Major (if applicable)"><br>
+    <input name="phone_number" placeholder="Phone Number (WhatsApp)" required><br>
+
+    <label>Are you a member of the ACS UNMSM Student Chapter?</label>
+    <select name="is_member" required>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select><br>
+
+    <input name="member_id" placeholder="Member ID (if applicable)"><br>
+
+    <label>Do you authorize the use of your image for promotional purposes?</label>
+    <select name="image_use_content" required>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select><br>
+
+    <label>Are you following us on social media?</label>
+    <select name="following_social_media" required>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const SUPABASE_URL = 'https://anmxgrjbltiduefiugva.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFubXhncmpibHRpZHVlZml1Z3ZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg4MTQzMzQsImV4cCI6MjA2NDM5MDMzNH0.bASlmB95BuGXSLVTibjkfm7thjPolDrUxTM4fcr-1vk';
+
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById('registration-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form));
+
+      data.is_member = data.is_member === "true";
+      data.image_use_content = data.image_use_content === "true";
+      data.following_social_media = data.following_social_media === "true";
+
+      // Limpia campos numéricos vacíos
+      if (data.member_id === "") data.member_id = null;
+      
+      const { error } = await supabaseClient
+        .from('event_registrations')
+        .insert([data]);
+
+      if (error) {
+        alert('Registration failed: ' + error.message);
+      } else {
+        alert('Registration successful!');
+        form.reset();
+      }
+    });
+
+  </script>
+</body>
+</html>
