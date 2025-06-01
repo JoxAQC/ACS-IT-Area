@@ -1,47 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Event Registration Form Launch Up ACS UNMSM 2025</title>
+  <title>Registro - Launch Up ACS UNMSM 2025</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      color: #003366;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background-color: #FFFFFF;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #0054A6;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      font-size: 14px;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .required {
+      color: red;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    .social-links {
+      margin: 10px 0 20px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 10px;
+      color: #0054A6;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    button {
+      background-color: #FFD400;
+      color: #003366;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #e5bc00;
+    }
+  </style>
 </head>
 <body>
-  <h1>Event Registration Form Launch Up ACS UNMSM 2025</h1>
-  
-  <form id="registration-form">
-    <!-- Hidden input for fixed event name -->
-    <input type="hidden" name="event_name" value="Launch Up ACS UNMSM 2025">
+  <div class="container">
+    <h1>Launch Up ACS UNMSM 2025</h1>
+    <p class="intro">
+      🎉 Te invitamos a ser parte del Launch Up del ACS UNMSM. Este evento marcará el inicio oficial de nuestro capítulo en la Universidad Nacional Mayor de San Marcos 🏛️ y reunirá a capítulos, asociaciones y redes estudiantiles con intereses comunes 🌐, creando un espacio para conectar 🤝, compartir ideas 💡 y fomentar la colaboración académica, científica y profesional 📚 ✨.
+      <br><br>
+      📅 <strong>Fecha:</strong> Viernes 23 de mayo<br>
+      📍 <strong>Lugar:</strong> Auditorio de la Facultad de Química e Ingeniería Química – UNMSM<br>
+      ⏰ <strong>Hora:</strong> 6:30 pm<br>
+      📲 Para consultas: Diana Soto – 939 595 523
+    </p>
 
-    <input name="full_name" placeholder="Full Name" required><br>
-    <input name="email" type="email" placeholder="Email" required><br>
-    <input name="id_document" placeholder="ID Document (DNI or Foreigner Card)" required><br>
-    <input name="organization" placeholder="Organization or University" required><br>
-    <input name="position" placeholder="Position (or 'Student')" required><br>
-    <input name="major" placeholder="University Major (if applicable)"><br>
-    <input name="phone_number" placeholder="Phone Number (WhatsApp)" required><br>
+    <form id="registration-form">
+      <input type="hidden" name="event_name" value="Launch Up ACS UNMSM 2025">
 
-    <label>Are you a member of the ACS UNMSM Student Chapter?</label>
-    <select name="is_member" required>
-      <option value="true">Yes</option>
-      <option value="false">No</option>
-    </select><br>
+      <label>Nombres y Apellidos <span class="required">*</span></label>
+      <input name="full_name" required>
 
-    <input name="member_id" placeholder="Member ID (if applicable)"><br>
+      <label>Correo electrónico <span class="required">*</span></label>
+      <input name="email" type="email" required>
 
-    <label>Do you authorize the use of your image for promotional purposes?</label>
-    <select name="image_use_content" required>
-      <option value="true">Yes</option>
-      <option value="false">No</option>
-    </select><br>
+      <label>DNI o Carnet de extranjería <span class="required">*</span></label>
+      <input name="id_document" required>
 
-    <label>Are you following us on social media?</label>
-    <select name="following_social_media" required>
-      <option value="true">Yes</option>
-      <option value="false">No</option>
-    </select><br>
+      <label>Organización / Universidad <span class="required">*</span></label>
+      <input name="organization" required>
 
-    <button type="submit">Submit</button>
-  </form>
+      <label>¿Cuál es tu puesto? (Si eres estudiante, indícalo) <span class="required">*</span></label>
+      <input name="position" required>
+
+      <label>Si eres estudiante, ¿cuál es tu carrera?</label>
+      <input name="major">
+
+      <label>Número de teléfono (WhatsApp) <span class="required">*</span></label>
+      <input name="phone_number" required>
+
+      <label>¿Eres miembro del Student Chapter ACS UNMSM? <span class="required">*</span></label>
+      <select name="is_member" required>
+        <option value="">Selecciona</option>
+        <option value="true">Sí</option>
+        <option value="false">No</option>
+      </select>
+
+      <label>Si respondiste "Sí", indica tu Member ID:</label>
+      <input name="member_id">
+
+      <label>¿Autorizas el uso de tu imagen para fines de difusión en redes sociales del capítulo ACS UNMSM? <span class="required">*</span></label>
+      <select name="image_use_content" required>
+        <option value="">Selecciona</option>
+        <option value="true">Sí</option>
+        <option value="false">No</option>
+      </select>
+
+      <p>📲 Síguenos en nuestras redes sociales:</p>
+      <div class="social-links">
+        🌍 <a href="https://www.facebook.com/profile.php?id=61571451074801" target="_blank">Facebook</a>
+        📸 <a href="https://www.instagram.com/acs.unmsm.pe/" target="_blank">Instagram</a>
+        💼 <a href="https://www.linkedin.com/company/unmsmacs/" target="_blank">LinkedIn</a>
+        💬 <a href="https://whatsapp.com/channel/0029Vb06ZVS42DcioR683m2J" target="_blank">Canal de WhatsApp</a>
+      </div>
+
+      <label>¿Nos sigues en redes sociales? <span class="required">*</span></label>
+      <select name="following_social_media" required>
+        <option value="">Selecciona</option>
+        <option value="true">Sí</option>
+        <option value="false">No</option>
+      </select>
+
+      <button type="submit">Enviar Registro</button>
+    </form>
+  </div>
 
   <script>
     const SUPABASE_URL = 'https://anmxgrjbltiduefiugva.supabase.co';
@@ -57,10 +167,13 @@
       data.is_member = data.is_member === "true";
       data.image_use_content = data.image_use_content === "true";
       data.following_social_media = data.following_social_media === "true";
+       // ✅ Agregar hora de registro en Lima
+      const now = new Date();
+      data.registered_at = now.toISOString(); // Formato ISO, compatible con timestamptz
 
       // Limpia campos numéricos vacíos
       if (data.member_id === "") data.member_id = null;
-      
+
       const { error } = await supabaseClient
         .from('event_registrations')
         .insert([data]);
