@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <title>Registro - Launch Up ACS UNMSM 2025</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+ <!-- SweetAlert2 para pop-ups bonitos -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -93,7 +97,7 @@
       📲 Para consultas: Diana Soto – 939 595 523
     </p>
 
-    <form id="registration-form">
+        <form id="registration-form">
       <input type="hidden" name="event_name" value="Launch Up ACS UNMSM 2025">
 
       <label>Nombres y Apellidos <span class="required">*</span></label>
@@ -103,7 +107,10 @@
       <input name="email" type="email" required>
 
       <label>DNI o Carnet de extranjería <span class="required">*</span></label>
-      <input name="id_document" required>
+      <input name="id_document" 
+      inputmode="numeric" 
+      maxlength="20" 
+      required  />
 
       <label>Organización / Universidad <span class="required">*</span></label>
       <input name="organization" required>
@@ -115,7 +122,13 @@
       <input name="major">
 
       <label>Número de teléfono (WhatsApp) <span class="required">*</span></label>
-      <input name="phone_number" required>
+      <input 
+      name="phone_number" 
+      pattern="\d{9}" 
+      inputmode="numeric" 
+      maxlength="9" 
+      required 
+      title="Debe ingresar exactamente 9 dígitos" />
 
       <label>¿Eres miembro del Student Chapter ACS UNMSM? <span class="required">*</span></label>
       <select name="is_member" required>
@@ -124,17 +137,16 @@
         <option value="false">No</option>
       </select>
 
-      <label>Si respondiste "Sí", indica tu Member ID:</label>
-      <input name="member_id">
+      <label>Si respondiste "Sí", indica tu Member ID (8 dígitos):</label>
+      <input name="member_id" maxlength="8">
 
-      <label>¿Autorizas el uso de tu imagen para fines de difusión en redes sociales del capítulo ACS UNMSM? <span class="required">*</span></label>
+      <label>¿Autorizas el uso de tu imagen...? <span class="required">*</span></label>
       <select name="image_use_content" required>
         <option value="">Selecciona</option>
         <option value="true">Sí</option>
         <option value="false">No</option>
       </select>
 
-      <p>📲 Síguenos en nuestras redes sociales:</p>
       <div class="social-links">
         🌍 <a href="https://www.facebook.com/profile.php?id=61571451074801" target="_blank">Facebook</a>
         📸 <a href="https://www.instagram.com/acs.unmsm.pe/" target="_blank">Instagram</a>
@@ -153,39 +165,75 @@
     </form>
   </div>
 
+  <div id="popup" class="popup" style="display: none;">
+    <div id="popup-content" class="popup-content">
+      <p id="popup-message"></p>
+      <button onclick="document.getElementById('popup').style.display='none'">Cerrar</button>
+    </div>
+  </div>
+
   <script>
     const SUPABASE_URL = 'https://anmxgrjbltiduefiugva.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFubXhncmpibHRpZHVlZml1Z3ZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg4MTQzMzQsImV4cCI6MjA2NDM5MDMzNH0.bASlmB95BuGXSLVTibjkfm7thjPolDrUxTM4fcr-1vk';
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const isStudentVariant = (value) => /estudiante|student/i.test(value.trim());
 
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const showError = (msg) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error de validación',
+        text: msg,
+        confirmButtonColor: '#0054A6'
+      });
+    };
+
+    const showSuccess = () => {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Registro exitoso!',
+        text: 'Gracias por registrarte. ¡Nos vemos en el evento!',
+        confirmButtonColor: '#0054A6'
+      });
+    };
 
     document.getElementById('registration-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.target;
       const data = Object.fromEntries(new FormData(form));
 
+      // Transformación
       data.is_member = data.is_member === "true";
       data.image_use_content = data.image_use_content === "true";
       data.following_social_media = data.following_social_media === "true";
-       // ✅ Agregar hora de registro en Lima
-      const now = new Date();
-      data.registered_at = now.toISOString(); // Formato ISO, compatible con timestamptz
+      data.registered_at = new Date().toISOString();
 
-      // Limpia campos numéricos vacíos
-      if (data.member_id === "") data.member_id = null;
+      // Validaciones
+      if (!data.email.includes('@')) return showError('El correo debe contener "@"');
+      if (data.id_document.length > 20) return showError('DNI/Carnet no debe exceder los 20 caracteres');
+      if (!/^\d{9}$/.test(data.phone_number)) return showError('Número de WhatsApp debe tener 9 dígitos');
+      if (!data.following_social_media) return showError('Debes seguirnos en redes sociales para registrarte');
 
-      const { error } = await supabaseClient
+      if (data.is_member && !/^\d{8}$/.test(data.member_id || '')) {
+        return showError('Debes ingresar tu Member ID de 8 dígitos si eres miembro del Student Chapter');
+      }
+
+      if (isStudentVariant(data.position) && (!data.major || data.major.trim() === '')) {
+        return showError('Si eres estudiante, debes indicar tu carrera');
+      }
+
+      // Limpiar campos opcionales
+      if (!data.member_id) data.member_id = null;
+      if (!data.major) data.major = null;
+
+      const { error } = await client
         .from('event_registrations')
         .insert([data]);
 
-      if (error) {
-        alert('Registration failed: ' + error.message);
-      } else {
-        alert('Registration successful!');
-        form.reset();
-      }
-    });
+      if (error) return showError('Error al registrar: ' + error.message);
 
+      form.reset();
+      showSuccess();
+    });
   </script>
 </body>
 </html>
