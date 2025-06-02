@@ -2,13 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Registro - Launch Up ACS UNMSM 2025</title>
+  
  <!-- SweetAlert2 para pop-ups bonitos -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
   <style>
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+    .image-container {
+      max-width: 100%;
+      width: 100%;
+      max-width: 900px;
+      padding: 1rem;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+
+      main {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .image-container {
+        padding: 0.5rem;
+      }
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f4f6f9;
@@ -83,11 +137,55 @@
     button:hover {
       background-color: #e5bc00;
     }
+
+    @media (max-width: 768px) {
+    .container {
+      margin: 20px;
+      padding: 20px;
+    }
+
+    input, select, button {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    label {
+      font-size: 14px;
+    }
+
+    .intro {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      margin: 10px;
+      padding: 15px;
+    }
+
+    .social-links a {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+    
   </style>
 </head>
 <body>
+
+  <main>
+    <div class="image-container">
+      <img src="img/launch_up_2025.png" alt="Launch Up ACS UNMSM 2025">
+    </div>
+  </main>
+
   <div class="container">
-    <h1>Launch Up ACS UNMSM 2025</h1>
+        <h1>Launch Up ACS UNMSM 2025</h1>
     <p class="intro">
       🎉 Te invitamos a ser parte del Launch Up del ACS UNMSM. Este evento marcará el inicio oficial de nuestro capítulo en la Universidad Nacional Mayor de San Marcos 🏛️ y reunirá a capítulos, asociaciones y redes estudiantiles con intereses comunes 🌐, creando un espacio para conectar 🤝, compartir ideas 💡 y fomentar la colaboración académica, científica y profesional 📚 ✨.
       <br><br>
@@ -140,7 +238,7 @@
       <label>Si respondiste "Sí", indica tu Member ID (8 dígitos):</label>
       <input name="member_id" maxlength="8">
 
-      <label>¿Autorizas el uso de tu imagen...? <span class="required">*</span></label>
+      <label>¿Autorizas el uso de imágenes tomadas durante el curso para fines de difusión académica en redes sociales del capítulo ACS – UNMSM? <span class="required">*</span></label>
       <select name="image_use_content" required>
         <option value="">Selecciona</option>
         <option value="true">Sí</option>
