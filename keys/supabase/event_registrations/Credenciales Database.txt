@@ -1,0 +1,6 @@
+Project name: ACS UNMSM Forms
+Database Password: acsunmsmformsTI2025
+
+    const SUPABASE_URL = 'https://anmxgrjbltiduefiugva.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFubXhncmpibHRpZHVlZml1Z3ZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg4MTQzMzQsImV4cCI6MjA2NDM5MDMzNH0.bASlmB95BuGXSLVTibjkfm7thjPolDrUxTM4fcr-1vk';
+
