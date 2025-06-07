@@ -1,0 +1,13 @@
+{
+  "home": {
+    "title": "Bienvenido",
+    "description": "Somos el área de TI."
+  },
+  "contact": {
+    "submit": "Enviar",
+    "name": "Tu Nombre",
+    "email": "Tu Email",
+    "subject": "Asunto",
+    "message": "Mensaje"
+  }
+}

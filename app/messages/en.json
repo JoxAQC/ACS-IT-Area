@@ -1,0 +1,13 @@
+{
+  "home": {
+    "title": "Welcome",
+    "description": "We are the IT department."
+  },
+  "contact": {
+    "submit": "Submit",
+    "name": "Your Name",
+    "email": "Your Email",
+    "subject": "Subject",
+    "message": "Message"
+  }
+}
