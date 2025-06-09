@@ -57,3 +57,5 @@ export default function About() {
     </>
   );
 }
+
+// This code defines the About page for a Next.js application, including a hero section with mission and vision statements.
