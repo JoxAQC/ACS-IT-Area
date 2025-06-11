@@ -26,9 +26,9 @@ export default function Footer({ locale = 'es' }) {
         <p className="lead">{t.description1}</p>
         <p className="lead">{t.description2}</p>
 
-        <div className="my-4">o o o o</div>
+        <div className="my-3">o o o o</div>
 
-        <p className="mb-3">{t.follow}</p>
+        <p className="mb-2">{t.follow}</p>
 
         <div className="social-icons d-flex justify-content-center gap-3 mb-4">
           <a href="https://instagram.com/acs.unmsm.pe" target="_blank" rel="noopener noreferrer" className="text-decoration-none">

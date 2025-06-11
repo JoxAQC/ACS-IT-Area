@@ -67,6 +67,18 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.social-icons a i {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  background-color: #ffd400;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
 .social-icons a:hover i {
     transform: scale(1.1);
 }

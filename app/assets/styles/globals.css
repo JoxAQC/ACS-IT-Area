@@ -19,3 +19,38 @@ body {
 .hero-section {
   padding: 4rem 0;
 }
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+.social-icons i {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    background-color: #ffd400;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons a i {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  background-color: #ffd400;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.social-icons a:hover i {
+    transform: scale(1.1);
+}
