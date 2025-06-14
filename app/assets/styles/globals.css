@@ -168,7 +168,7 @@ body {
 
 /* Estilos para la sección de contacto */
 .contact-section {
-  background: url('/public/assets/img/contact-bg.png') no-repeat center center;
+  background: url('/assets/img/contact-bg.png') no-repeat center center;
   background-size: cover;
   color: #0054a6;
   font-weight: 600;
@@ -186,7 +186,7 @@ body {
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   padding: 10px;
   border: 0px solid #ccc;
   border-radius: 20px;
@@ -207,6 +207,10 @@ body {
   transform: scale(1.05);
 }
 
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #888;
+}
 /* Estilos para la sección de capítulos */
 .chapters-section {
   background: url('/assets/img/chapter-bg.png') no-repeat center center;
