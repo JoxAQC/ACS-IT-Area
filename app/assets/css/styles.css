@@ -188,8 +188,12 @@ h2  {
 
 .chapters-section {
     background: url('/assets/img/chapter-bg.png') no-repeat center center;
-
-
+}
+.chapters-section h2 {
+  font-size: 2rem;
+  color: #0054a6;
+  margin-top: 1.5rem;
+  font-weight: 700;
 }
 
 [data-lang] {
