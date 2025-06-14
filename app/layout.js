@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
 import './assets/styles/globals.css';
+import './assets/css/styles.css';
 import './assets/styles/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
