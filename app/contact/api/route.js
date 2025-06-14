@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+//Agregar barra de carga para el botón de enviar
 
 export async function POST(request) {
   try {
