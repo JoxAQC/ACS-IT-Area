@@ -6,17 +6,40 @@ import React, { useEffect } from 'react';
 
 export default function SponsorsCarousel() {
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.bootstrap) {
-      const myCarousel = document.querySelector('#sponsorsCarousel');
-      new window.bootstrap.Carousel(myCarousel);
+    const initCarousel = async () => {
+    const myCarousel = document.querySelector('#sponsorsCarousel');
+    if (!myCarousel) return;
+
+    try {
+      const bootstrap = await import('bootstrap/dist/js/bootstrap.bundle.min.js');
+      if (bootstrap && bootstrap.Carousel) {
+        new bootstrap.Carousel(myCarousel, {
+          interval: 3000,
+          ride: 'carousel',
+        });
+      }
+    } catch (err) {
+      console.error('Error al cargar Bootstrap:', err);
     }
-  }, []);
+  };
+
+  // Ejecutar al asegurarse que el DOM está disponible
+  if (document.readyState === 'complete') {
+    initCarousel();
+  } else {
+    window.addEventListener('load', initCarousel);
+    return () => window.removeEventListener('load', initCarousel);
+  }
+}, []);
 
   return (
     <section className="container mt-5">
-      <div id="sponsorsCarousel" className="carousel slide sponsors-carousel" data-bs-ride="carousel">
+      <div id="sponsorsCarousel" 
+      className="carousel slide sponsors-carousel" 
+      data-bs-ride="carousel"
+      data-bs-interval="3000">
         <div className="carousel-inner">
-          <div className="carousel-item">
+          <div className="carousel-item active">
             <div className="sponsors-container d-flex justify-content-around">
               <img src="assets/img/s1.png" alt="Sponsor 1" />
               <img src="assets/img/s8.png" alt="Sponsor 2" />
@@ -37,7 +60,7 @@ export default function SponsorsCarousel() {
               <img src="assets/img/s9.webp" alt="Sponsor 9" />
             </div>
           </div>
-          <div className="carousel-item active">
+          <div className="carousel-item">
             <div className="sponsors-container d-flex justify-content-around">
               <img src="assets/img/s10.png" alt="Sponsor 10" />
               <img src="assets/img/s11.png" alt="Sponsor 11" />
@@ -70,7 +93,34 @@ export default function SponsorsCarousel() {
         >
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
+        {/* Estilos específicos para el carrusel de patrocinadores */}
+        <style jsx>{`
+            .sponsors-carousel {
+            height: 200px; /* Ajusta según tus imágenes */
+            margin: 0 auto;
+            max-width: 100%;
+            }
+            .sponsors-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px 0;
+            }
+            .sponsors-container img {
+            width: 10%;
+            height: auto;
+            object-fit: contain;
+            }
+            .carousel-inner {
+            overflow: hidden;
+            text-align: center;
+            }
+            .carousel-item {
+            transition: transform 0.8s ease-in-out; 
+            }
+        `}</style>
       </div>
+
     </section>
   );
 }

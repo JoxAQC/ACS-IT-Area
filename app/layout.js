@@ -3,7 +3,7 @@ import './assets/styles/globals.css';
 import './assets/styles/globals.css';
 import './assets/styles/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Head from 'next/head';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -24,6 +24,12 @@ export default function RootLayout({ children }) {
           /*integrity="sha384-..."*/
           crossOrigin="anonymous"
         />
+        <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-..."
+        crossOrigin="anonymous"
+        defer
+      ></script>
         {/* FONT AWESOME */}
         <link
           rel="stylesheet"
