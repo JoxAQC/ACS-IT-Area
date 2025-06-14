@@ -100,6 +100,18 @@ body {
 }
 
 /* Estilos para los iconos sociales */
+
+/* Corrección para FontAwesome */
+.fas, .fab, .far {
+  font-family: 'Font Awesome 5 Free' !important;
+  font-weight: 900 !important;
+}
+
+/* Específico para iconos de correo */
+.fa-envelope:before {
+  content: "\f0e0" !important;
+}
+
 .social-icons {
   display: flex;
   justify-content: center;
