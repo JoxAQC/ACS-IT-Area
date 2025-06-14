@@ -18,6 +18,13 @@ body {
 .navbar-nav a{
     text-align: center;
 }
+.navbar-brand img {
+    max-width: 100%;
+    height: auto;
+    max-height: 60px; 
+    object-fit: contain;
+}
+
 
 .hero-section {
     background-color: #ffffff;
