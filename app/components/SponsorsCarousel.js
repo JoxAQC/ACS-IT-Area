@@ -45,38 +45,38 @@ export default function SponsorsCarousel() {
         >
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <div className="sponsors-container d-flex justify-content-around">
-                <img src="assets/img/s1.png" alt="Sponsor 1" />
-                <img src="assets/img/s8.png" alt="Sponsor 2" />
-                <img src="assets/img/s3.png" alt="Sponsor 3" />
+              <div className="sponsors-container d-flex justify-content-around h-100">
+                <img src="assets/img/s1.png" alt="Sponsor 1" className="h-100" />
+                <img src="assets/img/s8.png" alt="Sponsor 2" className="h-100" />
+                <img src="assets/img/s3.png" alt="Sponsor 3" className="h-100" />
               </div>
             </div>
             <div className="carousel-item">
-              <div className="sponsors-container d-flex justify-content-around">
-                <img src="assets/img/s4.png" alt="Sponsor 4" />
-                <img src="assets/img/s5.jpg" alt="Sponsor 5" />
-                <img src="assets/img/Poderosa.png" alt="Sponsor 14" />
+              <div className="sponsors-container d-flex justify-content-around h-100">
+                <img src="assets/img/s4.png" alt="Sponsor 4" className="h-100" />
+                <img src="assets/img/s5.jpg" alt="Sponsor 5" className="h-100" />
+                <img src="assets/img/Poderosa.png" alt="Sponsor 14" className="h-100" />
               </div>
             </div>
             <div className="carousel-item">
-              <div className="sponsors-container d-flex justify-content-around">
-                <img src="assets/img/s7.png" alt="Sponsor 7" />
-                <img src="assets/img/s2.png" alt="Sponsor 8" />
-                <img src="assets/img/s9.webp" alt="Sponsor 9" />
+              <div className="sponsors-container d-flex justify-content-around h-100">
+                <img src="assets/img/s7.png" alt="Sponsor 7" className="h-100" />
+                <img src="assets/img/s2.png" alt="Sponsor 8" className="h-100" />
+                <img src="assets/img/s9.webp" alt="Sponsor 9" className="h-100" />
               </div>
             </div>
             <div className="carousel-item">
-              <div className="sponsors-container d-flex justify-content-around">
-                <img src="assets/img/s10.png" alt="Sponsor 10" />
-                <img src="assets/img/s11.png" alt="Sponsor 11" />
-                <img src="assets/img/s12.png" alt="Sponsor 12" />
+              <div className="sponsors-container d-flex justify-content-around h-100">
+                <img src="assets/img/s10.png" alt="Sponsor 10" className="h-100" />
+                <img src="assets/img/s11.png" alt="Sponsor 11" className="h-100" />
+                <img src="assets/img/s12.png" alt="Sponsor 12" className="h-100" />
               </div>
             </div>
             <div className="carousel-item">
-              <div className="sponsors-container d-flex justify-content-around">
-                <img src="assets/img/s13.png" alt="Sponsor 13" />
-                <img src="assets/img/s6.png" alt="Sponsor 6" />
-                <img src="assets/img/s14.png" alt="Sponsor 15" />
+              <div className="sponsors-container d-flex justify-content-around h-100">
+                <img src="assets/img/s13.png" alt="Sponsor 13" className="h-100" />
+                <img src="assets/img/s6.png" alt="Sponsor 6" className="h-100" />
+                <img src="assets/img/s14.png" alt="Sponsor 15" className="h-100" />
               </div>
             </div>
           </div>
@@ -87,14 +87,14 @@ export default function SponsorsCarousel() {
           className="position-absolute top-0 start-0 h-100 w-20 bg-transparent border-0 p-0"
           type="button"
           data-bs-target="#sponsorsCarousel"
-          data-bs-slide="next"  // Cambiado a next
+          data-bs-slide="next"
           aria-label="Siguiente"
         />
         <button
           className="position-absolute top-0 end-0 h-100 w-20 bg-transparent border-0 p-0"
           type="button"
           data-bs-target="#sponsorsCarousel"
-          data-bs-slide="prev"  // Cambiado a prev
+          data-bs-slide="prev"
           aria-label="Anterior"
         />
       </div>
@@ -111,17 +111,20 @@ export default function SponsorsCarousel() {
           display: flex;
           justify-content: space-around;
           align-items: center;
-          padding: 20px 0;
           height: 100%;
+          padding: 0;
         }
         .sponsors-container img {
-          width: 10%;
-          height: auto;
-          max-height: 120px;
+          height: 100%;
+          width: auto;
+          max-width: 20%;
           object-fit: contain;
+          padding: 10px;
+          box-sizing: border-box;
         }
         .carousel-item {
           transition: transform 0.8s ease-in-out; 
+          height: 100%;
         }
         .w-20 {
           width: 20%;
@@ -129,6 +132,7 @@ export default function SponsorsCarousel() {
         .carousel-inner {
           overflow: hidden;
           text-align: center;
+          height: 100%;
         }
         
         /* Dirección a la derecha */
