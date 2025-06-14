@@ -29,7 +29,6 @@ export default function Footer({ locale = 'es' }) {
 
   return (
     <footer className="footer">
-      {/* Fondo decorativo */}
       <div className="footer-bg"></div>
       
       <div className="footer-container">
@@ -54,10 +53,12 @@ export default function Footer({ locale = 'es' }) {
             rel="noopener noreferrer"
             className="footer-social-link"
           >
-            <FontAwesomeIcon 
-              icon={faInstagram} 
-              className="footer-social-icon"
-            />
+            <div className="footer-social-icon-container">
+              <FontAwesomeIcon 
+                icon={faInstagram} 
+                className="footer-social-icon"
+              />
+            </div>
           </a>
           <a 
             href="https://www.facebook.com/profile.php?id=61571451074801" 
@@ -65,10 +66,12 @@ export default function Footer({ locale = 'es' }) {
             rel="noopener noreferrer"
             className="footer-social-link"
           >
-            <FontAwesomeIcon 
-              icon={faFacebookF} 
-              className="footer-social-icon"
-            />
+            <div className="footer-social-icon-container">
+              <FontAwesomeIcon 
+                icon={faFacebookF} 
+                className="footer-social-icon"
+              />
+            </div>
           </a>
           <a 
             href="https://www.linkedin.com/company/unmsmacs" 
@@ -76,10 +79,12 @@ export default function Footer({ locale = 'es' }) {
             rel="noopener noreferrer"
             className="footer-social-link"
           >
-            <FontAwesomeIcon 
-              icon={faLinkedinIn} 
-              className="footer-social-icon"
-            />
+            <div className="footer-social-icon-container">
+              <FontAwesomeIcon 
+                icon={faLinkedinIn} 
+                className="footer-social-icon"
+              />
+            </div>
           </a>
         </div>
         

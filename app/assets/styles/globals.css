@@ -380,6 +380,7 @@ h2 {
   color: white;
   background-color: #ffd400;
   border-radius: 50%;
+  aspect-ratio: 1;
   width: 50px;
   height: 50px;
   display: flex;
@@ -413,4 +414,28 @@ h2 {
     height: 40px;
     font-size: 20px;
   }
+}
+
+.footer-social-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffd400;
+  transition: all 0.3s ease;
+}
+
+.footer-social-icon {
+  font-size: 24px;
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.footer-social-link:hover .footer-social-icon-container {
+  transform: scale(1.1);
+  background-color: #0054a6;
 }
