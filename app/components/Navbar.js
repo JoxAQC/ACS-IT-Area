@@ -44,7 +44,7 @@ export default function Navbar() {
                 <Link href="/chapters" className="nav-link">Officers</Link>
               </li>
               <li className="nav-item">
-                <a href="https://hidroinnova.acs-unmsm.org/" target="_blank" className="nav-link">Challenge</a>
+                <a href="https://hidroinnova.acs-unmsm.org/" target="_blank" className="nav-link">Hidroinnova Challenge</a>
               </li>
               <li className="nav-item">
                 <Link href="/events" className="nav-link">Events</Link>

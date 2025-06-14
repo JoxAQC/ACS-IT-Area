@@ -22,7 +22,7 @@ export default function About() {
 
       <Navbar />
 
-      <section className="hero-section bg-light py-5" style={{ backgroundColor: '#0054a6' }}>
+      <section className="hero-section py-5" style={{ backgroundColor: '#0054a6' }}>
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-md-6 text-white">
@@ -32,14 +32,14 @@ export default function About() {
                 Nacional Mayor de San Marcos, dedicado a fomentar el interés por la química y la
                 ciencia en la comunidad estudiantil.
               </p>
-              <div>
+              <div className="ms-4">
                 <h5 style={{ color: '#ffd400' }}>Misión</h5>
                 <p>
                   Despertar el interés por la ciencia en los jóvenes, promoviendo la participación
                   en actividades científicas y académicas que enriquezcan su formación.
                 </p>
               </div>
-              <div>
+              <div className="ms-4">
                 <h5 style={{ color: '#ffd400' }}>Visión</h5>
                 <p>
                   Convertirnos en el principal referente estudiantil de divulgación científica y
