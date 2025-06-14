@@ -4,6 +4,13 @@ import './assets/styles/globals.css';
 import './assets/styles/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+
+config.autoAddCss = false;
+
+
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }) {
