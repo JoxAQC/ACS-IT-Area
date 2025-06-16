@@ -15,10 +15,6 @@ const nextConfig = {
         hostname: 'cdn.pixabay.com' // Para la imagen del avatar de WhatsApp
       }
     ],
-  },
-  // Si necesitas habilitar CORS en desarrollo (opcional)
-  experimental: {
-    allowedDevOrigins: ['localhost', '192.168.0.103'] // Reemplaza con tu IP/localhost
   }
 };
 
